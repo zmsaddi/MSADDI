@@ -1,48 +1,27 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import HomePage from './pages/HomePage';
+import LanguageSwitcher from './components/LanguageSwitcher';
 
 function App() {
-  const [language, setLanguage] = useState('ar')
-
-  const content = {
-    ar: {
-      title: "مؤسسة مسدي",
-      subtitle: "للمقاولات والصيانة",
-      welcome: "مرحباً بكم في موقعنا"
-    },
-    en: {
-      title: "MSADDI Foundation",
-      subtitle: "For Contracting and Maintenance",
-      welcome: "Welcome to our website"
-    }
-  }
-
-  const toggleLanguage = () => {
-    setLanguage(language === 'ar' ? 'en' : 'ar')
-  }
-
-  const t = content[language]
+  const [language, setLanguage] = useState('ar');
 
   return (
     <div className={`container ${language === 'ar' ? 'rtl' : 'ltr'}`}>
       <header>
-        <button onClick={toggleLanguage} className="lang-button">
-          {language === 'ar' ? 'English' : 'العربية'}
-        </button>
-      </header>
-      <main>
-        <div className="logo-container">
-          <div className="logo">MSADDI</div>
+        <div className="logo-text">
+          {language === 'ar' ? 'مؤسسة مسدي' : 'MSADDI Foundation'}
         </div>
-        <h1>{t.title}</h1>
-        <h2>{t.subtitle}</h2>
-        <p>{t.welcome}</p>
-      </main>
+        <LanguageSwitcher language={language} setLanguage={setLanguage} />
+      </header>
+      
+      <HomePage language={language} />
+      
       <footer>
-        <p>© 2025 MSADDI - جميع الحقوق محفوظة</p>
+        <p>© 2025 MSADDI - {language === 'ar' ? 'جميع الحقوق محفوظة' : 'All Rights Reserved'}</p>
       </footer>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
