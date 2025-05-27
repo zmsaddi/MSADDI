@@ -3,15 +3,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
 
 :root {
-  --primary-color: #0a3d62;
-  --secondary-color: #e74c3c;
+  /* ألوان جديدة متناسقة مع الشعار الجديد */
+  --primary-color: #0a3d62; /* أزرق داكن مثل خلفية الشعار */
+  --secondary-color: #1e90ff; /* أزرق فاتح مثل رأس الليزر في الشعار */
+  --accent-color: #3498db; /* أزرق متوسط للتفاصيل */
   --text-color: #333;
   --light-bg: #f8f9fa;
-  --dark-bg: #2c3e50;
+  --dark-bg: #0a3d62; /* نفس الأزرق الداكن للشعار */
   --border-radius: 8px;
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --border-color: #ddd;
-  --highlight-bg: #f1f8ff;
+  --border-color: #1e90ff; /* أزرق فاتح للحدود */
+  --highlight-bg: #e6f2ff; /* خلفية فاتحة للتأكيد */
+  --whatsapp-color: #25D366; /* لون واتساب الرسمي */
+  --promo-bg: #0a3d62; /* خلفية العروض الترويجية */
+  --promo-border: #ff5252; /* حدود العروض الترويجية */
 }
 
 * {
@@ -83,6 +88,52 @@ header {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  position: relative; /* للزر العائم */
+}
+
+/* قسم العروض الترويجية */
+.promo-banner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+}
+
+.promo-item {
+  background-color: var(--promo-bg);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  box-shadow: var(--box-shadow);
+  border: 2px solid var(--promo-border);
+  transition: transform 0.3s ease;
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+  text-align: center;
+}
+
+.promo-item:hover {
+  transform: translateY(-5px);
+}
+
+.promo-icon {
+  font-size: 1.5rem;
+  margin-right: 0.8rem;
+}
+
+.rtl .promo-icon {
+  margin-right: 0;
+  margin-left: 0.8rem;
+}
+
+.promo-text {
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .hero-section {
@@ -99,11 +150,13 @@ header {
 
 .logo-container {
   margin-bottom: 1.5rem;
+  max-width: 300px;
 }
 
 .logo-image {
-  max-width: 200px;
+  max-width: 100%;
   height: auto;
+  border-radius: var(--border-radius);
 }
 
 .hero-content h1 {
@@ -111,18 +164,90 @@ header {
   color: var(--primary-color);
   margin-bottom: 0.5rem;
   font-weight: 700;
+  text-align: center;
 }
 
 .hero-content h2 {
   font-size: 1.5rem;
   color: var(--secondary-color);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   font-weight: 500;
+  text-align: center;
 }
 
-.welcome-text {
-  font-size: 1.2rem;
+.cta-button {
+  display: inline-block;
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 1rem;
+}
+
+.cta-button:hover {
+  background-color: var(--primary-color);
+  transform: scale(1.05);
+}
+
+/* قسم المميزات */
+.features-section {
+  background-color: white;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+}
+
+.features-section h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
   margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.feature-item {
+  background-color: var(--highlight-bg);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--border-color);
+  box-shadow: var(--box-shadow);
+  display: flex;
+  align-items: flex-start;
+  text-align: right;
+}
+
+.ltr .feature-item {
+  text-align: left;
+}
+
+.feature-icon {
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  margin-left: 0.8rem;
+  margin-right: 0;
+  flex-shrink: 0;
+}
+
+.ltr .feature-icon {
+  margin-left: 0;
+  margin-right: 0.8rem;
+}
+
+.feature-item p {
+  font-size: 1.1rem;
+  margin: 0;
+  flex-grow: 1;
 }
 
 .machine-section {
@@ -131,6 +256,7 @@ header {
   margin-bottom: 2rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
+  text-align: center;
 }
 
 .machine-section h2 {
@@ -161,7 +287,7 @@ header {
 
 /* إطار للمعلومات المهمة */
 .info-box {
-  border: 2px solid var(--primary-color);
+  border: 2px solid var(--secondary-color);
   border-radius: var(--border-radius);
   padding: 1rem;
   margin-bottom: 1rem;
@@ -171,16 +297,61 @@ header {
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 
 .info-box p {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
   font-weight: 500;
+  text-align: center;
 }
 
 .info-box p:last-child {
   margin-bottom: 0;
+}
+
+/* قسم القياسات المتوفرة */
+.sizes-section {
+  background-color: white;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+}
+
+.sizes-section h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.sizes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  justify-content: center;
+}
+
+.size-item {
+  background-color: var(--highlight-bg);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 0.8rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  text-align: center;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s ease;
+}
+
+.size-item:hover {
+  transform: scale(1.05);
+  background-color: var(--secondary-color);
+  color: white;
 }
 
 .contact-section {
@@ -188,6 +359,7 @@ header {
   padding: 2rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
+  text-align: center;
 }
 
 .contact-section h2 {
@@ -209,7 +381,7 @@ header {
   background-color: var(--highlight-bg);
   border-radius: var(--border-radius);
   text-align: center;
-  border: 2px solid var(--primary-color);
+  border: 2px solid var(--secondary-color);
   box-shadow: var(--box-shadow);
 }
 
@@ -218,11 +390,85 @@ header {
   color: var(--secondary-color);
   margin-bottom: 0.5rem;
   font-weight: 600;
+  text-align: center;
 }
 
 .contact-item p {
   font-size: 1.1rem;
   font-weight: 500;
+  text-align: center;
+}
+
+/* تنسيق روابط الخرائط */
+.map-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.map-link:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+/* تنسيق زر الواتساب */
+.whatsapp-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.8rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--whatsapp-color);
+  color: white;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.whatsapp-button:hover {
+  background-color: #128C7E;
+}
+
+.whatsapp-icon {
+  margin-right: 0.5rem;
+  display: inline-flex;
+}
+
+.rtl .whatsapp-icon {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+/* زر واتساب ثابت */
+.floating-whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--whatsapp-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.rtl .floating-whatsapp-button {
+  right: auto;
+  left: 20px;
+}
+
+.floating-whatsapp-button:hover {
+  transform: scale(1.1);
+  background-color: #128C7E;
 }
 
 footer {
@@ -250,8 +496,8 @@ footer {
 @media (min-width: 768px) {
   .hero-section {
     flex-direction: row;
-    text-align: initial;
     justify-content: space-around;
+    align-items: center;
   }
   
   .logo-container {
@@ -282,11 +528,44 @@ footer {
   }
   
   .machine-info {
-    text-align: left;
     flex: 1;
   }
+}
+
+/* تحسينات للأجهزة المحمولة */
+@media (max-width: 767px) {
+  .floating-whatsapp-button {
+    width: 50px;
+    height: 50px;
+    bottom: 15px;
+    right: 15px;
+  }
   
-  .rtl .machine-info {
-    text-align: right;
+  .rtl .floating-whatsapp-button {
+    right: auto;
+    left: 15px;
+  }
+  
+  .promo-item {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .promo-icon {
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .feature-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .feature-icon {
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .ltr .feature-icon {
+    margin: 0 0 0.5rem 0;
   }
 }
