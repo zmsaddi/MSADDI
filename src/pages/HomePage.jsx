@@ -5,7 +5,7 @@ function HomePage({ language }) {
   const content = {
     ar: {
       title: "مؤسسة مسدي",
-      subtitle: "لقطع الليزر",
+      subtitle: "لتصنيع الصفائح المعدنية",
       services: "خدماتنا",
       servicesDesc: "نساعد عملائنا في إنتاج قطع معدنية متميزة من خلال تقديم خبرة متخصصة في الصناعة، وحلول فعالة من حيث التكلفة، وتصنيع قوي، مع راحة البال في كل مشروع.",
       contact: "اتصل بنا",
@@ -19,6 +19,8 @@ function HomePage({ language }) {
       location: "حلب - الشقيف الصناعية",
       locationCode: "7539+FHC، حلب، سوريا",
       whatsapp: "تواصل عبر واتساب",
+      viewOnMap: "عرض الموقع على الخريطة",
+      sendEmail: "إرسال بريد إلكتروني",
       availableSizes: "القياسات المتوفرة",
       features: "مميزات خدماتنا",
       feature1: "قص جميع أنواع المعادن بتقنية الليزر عالية الدقة",
@@ -32,7 +34,7 @@ function HomePage({ language }) {
     },
     en: {
       title: "MSADDI",
-      subtitle: "LASER CUTTING",
+      subtitle: "SHEET METAL FABRICATION",
       services: "Our Services",
       servicesDesc: "We help clients produce premium metal parts by providing industry-specific expertise, cost-effective solutions, a powerful manufacturing, and peace of mind with every project.",
       contact: "Contact Us",
@@ -46,6 +48,8 @@ function HomePage({ language }) {
       location: "Aleppo - Al-Shqaif Industrial Zone",
       locationCode: "7539+FHC, Aleppo, Syria",
       whatsapp: "Contact via WhatsApp",
+      viewOnMap: "View Location on Map",
+      sendEmail: "Send Email",
       availableSizes: "Available Sizes",
       features: "Our Service Features",
       feature1: "Cutting all types of metals with high-precision laser technology",
@@ -85,6 +89,11 @@ function HomePage({ language }) {
     const cleanNumber = phoneNumber.replace(/\D/g, '');
     return `https://wa.me/${cleanNumber}`;
   };
+  
+  // رابط البريد الإلكتروني
+  const getEmailUrl = (email) => {
+    return `mailto:${email}`;
+  };
 
   return (
     <div className="page-container">
@@ -108,7 +117,7 @@ function HomePage({ language }) {
           <h1>{t.title}</h1>
           <h2>{t.subtitle}</h2>
           <a 
-            href={getWhatsAppUrl("966944244604")} 
+            href={getWhatsAppUrl("963944244604")} 
             target="_blank" 
             rel="noopener noreferrer" 
             className="cta-button"
@@ -118,37 +127,40 @@ function HomePage({ language }) {
         </div>
       </div>
 
-      <div className="features-section">
-        <h2>{t.features}</h2>
-        <div className="features-grid">
-          <div className="feature-item">
-            <div className="feature-icon">✓</div>
-            <p>{t.feature1}</p>
-          </div>
-          <div className="feature-item">
-            <div className="feature-icon">✓</div>
-            <p>{t.feature2}</p>
-          </div>
-          <div className="feature-item">
-            <div className="feature-icon">✓</div>
-            <p>{t.feature3}</p>
-          </div>
-          <div className="feature-item">
-            <div className="feature-icon">✓</div>
-            <p>{t.feature4}</p>
-          </div>
-          <div className="feature-item">
-            <div className="feature-icon">✓</div>
-            <p>{t.feature5}</p>
+      <div className="services-section">
+        <h2>{t.services}</h2>
+        <div className="services-description">
+          <p>{t.servicesDesc}</p>
+        </div>
+        
+        <div className="features-section">
+          <h3>{t.features}</h3>
+          <div className="features-grid">
+            <div className="feature-item">
+              <div className="feature-icon">✓</div>
+              <p>{t.feature1}</p>
+            </div>
+            <div className="feature-item">
+              <div className="feature-icon">✓</div>
+              <p>{t.feature2}</p>
+            </div>
+            <div className="feature-item">
+              <div className="feature-icon">✓</div>
+              <p>{t.feature3}</p>
+            </div>
+            <div className="feature-item">
+              <div className="feature-icon">✓</div>
+              <p>{t.feature4}</p>
+            </div>
+            <div className="feature-item">
+              <div className="feature-icon">✓</div>
+              <p>{t.feature5}</p>
+            </div>
           </div>
         </div>
       </div>
 
       <div className="machine-section">
-        <h2>{t.services}</h2>
-        <div className="services-description">
-          <p>{t.servicesDesc}</p>
-        </div>
         <div className="machine-container">
           <img src="/images/machine.png" alt="Industrial Machine" className="machine-image" />
           <div className="machine-info">
@@ -182,9 +194,9 @@ function HomePage({ language }) {
         <div className="contact-info">
           <div className="contact-item">
             <h3>{t.phone}</h3>
-            <p dir="ltr">+966 944244604</p>
+            <p dir="ltr">+963 944244604</p>
             <a 
-              href={getWhatsAppUrl("966944244604")} 
+              href={getWhatsAppUrl("963944244604")} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="whatsapp-button"
@@ -199,18 +211,37 @@ function HomePage({ language }) {
           </div>
           <div className="contact-item">
             <h3>{t.email}</h3>
-            <p>info@msaddi.com</p>
+            <p>ah.msaddi@hotmail.com</p>
+            <a 
+              href={getEmailUrl("ah.msaddi@hotmail.com")} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="email-button"
+            >
+              <span className="email-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20">
+                  <path fill="currentColor" d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/>
+                </svg>
+              </span>
+              {t.sendEmail}
+            </a>
           </div>
           <div className="contact-item">
             <h3>{t.address}</h3>
             <p>{t.location}</p>
+            <p>{t.locationCode}</p>
             <a 
               href={getGoogleMapsUrl(t.locationCode)} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="map-link"
+              className="map-button"
             >
-              {t.locationCode}
+              <span className="map-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="20" height="20">
+                  <path fill="currentColor" d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/>
+                </svg>
+              </span>
+              {t.viewOnMap}
             </a>
           </div>
         </div>
@@ -218,7 +249,7 @@ function HomePage({ language }) {
       
       {/* زر واتساب ثابت */}
       <a 
-        href={getWhatsAppUrl("966944244604")} 
+        href={getWhatsAppUrl("963944244604")} 
         target="_blank" 
         rel="noopener noreferrer" 
         className="floating-whatsapp-button"

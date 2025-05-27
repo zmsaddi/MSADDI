@@ -15,6 +15,8 @@
   --border-color: #1e90ff; /* أزرق فاتح للحدود */
   --highlight-bg: #e6f2ff; /* خلفية فاتحة للتأكيد */
   --whatsapp-color: #25D366; /* لون واتساب الرسمي */
+  --map-color: #4285F4; /* لون خرائط جوجل */
+  --email-color: #DB4437; /* لون البريد الإلكتروني */
   --promo-bg: #0a3d62; /* خلفية العروض الترويجية */
   --promo-border: #ff5252; /* حدود العروض الترويجية */
 }
@@ -23,6 +25,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-align: center; /* توسيط جميع النصوص افتراضياً */
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -30,24 +39,27 @@ body {
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--light-bg);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* تطبيق الخط العربي عند اختيار اللغة العربية */
 .rtl {
   font-family: 'Tajawal', 'Cairo', sans-serif;
   direction: rtl;
-  text-align: right;
 }
 
 .ltr {
   direction: ltr;
-  text-align: left;
 }
 
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  flex: 1;
 }
 
 header {
@@ -61,6 +73,7 @@ header {
   top: 0;
   z-index: 100;
   box-shadow: var(--box-shadow);
+  width: 100%;
 }
 
 .logo-text {
@@ -85,6 +98,7 @@ header {
 }
 
 .page-container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -99,6 +113,7 @@ header {
   gap: 1rem;
   margin-bottom: 2rem;
   padding: 0.5rem;
+  width: 100%;
 }
 
 .promo-item {
@@ -108,13 +123,13 @@ header {
   border-radius: 30px;
   display: flex;
   align-items: center;
+  justify-content: center;
   box-shadow: var(--box-shadow);
   border: 2px solid var(--promo-border);
   transition: transform 0.3s ease;
   flex: 1;
   min-width: 250px;
   max-width: 400px;
-  text-align: center;
 }
 
 .promo-item:hover {
@@ -140,12 +155,13 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  padding: 2rem 0;
+  justify-content: center;
+  padding: 2rem;
   margin-bottom: 2rem;
   background-color: white;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
+  width: 100%;
 }
 
 .logo-container {
@@ -164,7 +180,6 @@ header {
   color: var(--primary-color);
   margin-bottom: 0.5rem;
   font-weight: 700;
-  text-align: center;
 }
 
 .hero-content h2 {
@@ -172,7 +187,6 @@ header {
   color: var(--secondary-color);
   margin-bottom: 1.5rem;
   font-weight: 500;
-  text-align: center;
 }
 
 .cta-button {
@@ -192,21 +206,44 @@ header {
   transform: scale(1.05);
 }
 
-/* قسم المميزات */
-.features-section {
+/* قسم الخدمات */
+.services-section {
   background-color: white;
   padding: 2rem;
   margin-bottom: 2rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  text-align: center;
+  width: 100%;
 }
 
-.features-section h2 {
+.services-section h2 {
   font-size: 2rem;
   color: var(--primary-color);
   margin-bottom: 1.5rem;
-  text-align: center;
+  font-weight: 600;
+}
+
+.services-description {
+  margin-bottom: 2rem;
+}
+
+.services-description p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* قسم المميزات */
+.features-section {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.features-section h3 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
   font-weight: 600;
 }
 
@@ -214,6 +251,7 @@ header {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
+  width: 100%;
 }
 
 .feature-item {
@@ -223,12 +261,8 @@ header {
   border: 2px solid var(--border-color);
   box-shadow: var(--box-shadow);
   display: flex;
-  align-items: flex-start;
-  text-align: right;
-}
-
-.ltr .feature-item {
-  text-align: left;
+  align-items: center;
+  justify-content: center;
 }
 
 .feature-icon {
@@ -256,14 +290,13 @@ header {
   margin-bottom: 2rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  text-align: center;
+  width: 100%;
 }
 
 .machine-section h2 {
   font-size: 2rem;
   color: var(--primary-color);
   margin-bottom: 1.5rem;
-  text-align: center;
   font-weight: 600;
 }
 
@@ -271,6 +304,8 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .machine-image {
@@ -281,7 +316,6 @@ header {
 }
 
 .machine-info {
-  text-align: center;
   width: 100%;
 }
 
@@ -297,14 +331,12 @@ header {
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
 }
 
 .info-box p {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
   font-weight: 500;
-  text-align: center;
 }
 
 .info-box p:last-child {
@@ -318,14 +350,13 @@ header {
   margin-bottom: 2rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  text-align: center;
+  width: 100%;
 }
 
 .sizes-section h2 {
   font-size: 2rem;
   color: var(--primary-color);
   margin-bottom: 1.5rem;
-  text-align: center;
   font-weight: 600;
 }
 
@@ -334,6 +365,7 @@ header {
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1rem;
   justify-content: center;
+  width: 100%;
 }
 
 .size-item {
@@ -343,7 +375,6 @@ header {
   padding: 0.8rem;
   font-weight: 500;
   font-size: 1.1rem;
-  text-align: center;
   box-shadow: var(--box-shadow);
   transition: transform 0.3s ease;
 }
@@ -359,14 +390,13 @@ header {
   padding: 2rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  text-align: center;
+  width: 100%;
 }
 
 .contact-section h2 {
   font-size: 2rem;
   color: var(--primary-color);
   margin-bottom: 1.5rem;
-  text-align: center;
   font-weight: 600;
 }
 
@@ -374,13 +404,13 @@ header {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
+  width: 100%;
 }
 
 .contact-item {
   padding: 1rem;
   background-color: var(--highlight-bg);
   border-radius: var(--border-radius);
-  text-align: center;
   border: 2px solid var(--secondary-color);
   box-shadow: var(--box-shadow);
 }
@@ -390,28 +420,70 @@ header {
   color: var(--secondary-color);
   margin-bottom: 0.5rem;
   font-weight: 600;
-  text-align: center;
 }
 
 .contact-item p {
   font-size: 1.1rem;
   font-weight: 500;
-  text-align: center;
+  margin-bottom: 0.5rem;
 }
 
-/* تنسيق روابط الخرائط */
-.map-link {
-  display: inline-block;
-  margin-top: 0.5rem;
-  color: var(--secondary-color);
+/* تنسيق زر البريد الإلكتروني */
+.email-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.8rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--email-color);
+  color: white;
+  border-radius: var(--border-radius);
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
 }
 
-.map-link:hover {
-  color: var(--primary-color);
-  text-decoration: underline;
+.email-button:hover {
+  background-color: #C53929;
+}
+
+.email-icon {
+  margin-right: 0.5rem;
+  display: inline-flex;
+}
+
+.rtl .email-icon {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+/* تنسيق زر الخرائط */
+.map-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.8rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--map-color);
+  color: white;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.map-button:hover {
+  background-color: #3367D6;
+}
+
+.map-icon {
+  margin-right: 0.5rem;
+  display: inline-flex;
+}
+
+.rtl .map-icon {
+  margin-right: 0;
+  margin-left: 0.5rem;
 }
 
 /* تنسيق زر الواتساب */
@@ -474,9 +546,9 @@ header {
 footer {
   background-color: var(--dark-bg);
   color: white;
-  text-align: center;
   padding: 1.5rem;
   margin-top: 2rem;
+  width: 100%;
 }
 
 /* تحسين وضوح الخط العربي */
@@ -534,6 +606,26 @@ footer {
 
 /* تحسينات للأجهزة المحمولة */
 @media (max-width: 767px) {
+  .page-container {
+    padding: 10px;
+  }
+  
+  .hero-section, 
+  .services-section, 
+  .machine-section, 
+  .sizes-section, 
+  .contact-section {
+    padding: 1.5rem;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-content h2 {
+    font-size: 1.2rem;
+  }
+  
   .floating-whatsapp-button {
     width: 50px;
     height: 50px;
@@ -558,7 +650,6 @@ footer {
   .feature-item {
     flex-direction: column;
     align-items: center;
-    text-align: center;
   }
   
   .feature-icon {
@@ -567,5 +658,13 @@ footer {
   
   .ltr .feature-icon {
     margin: 0 0 0.5rem 0;
+  }
+  
+  .sizes-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+  
+  .contact-info {
+    grid-template-columns: 1fr;
   }
 }
